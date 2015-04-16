@@ -13,6 +13,10 @@
 
 Route::get('/', 'LendingController@index');
 
+Route::get('/lend', 'LendingController@getLend');
+
+Route::get('/return', 'LendingController@getReturn');
+
 Route::controller('lending', 'LendingController');
 
 Route::get('home', 'HomeController@index');
@@ -22,8 +26,10 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::group(['prefix' => 'admin'], function()
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
 {
+	Route::get('/', 'Admin\VisitLogController@anyIndex');
+
 	Route::controller('device', 'Admin\DeviceController');
 
 	Route::controller('device-type', 'Admin\DeviceTypeController');

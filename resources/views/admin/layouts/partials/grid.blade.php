@@ -38,7 +38,7 @@
                             echo '<a href="#">'.$column['header'].'</a>';
                         }
                         else{
-                            echo \App\Services\Html::gridSort($column['header'], $column['name'], $filters['filter_order_dir'], $filters['filter_order']);
+                            echo \Doanthuan\Ladmin\Helper\Html::gridSort($column['header'], $column['name'], $filters['filter_order_dir'], $filters['filter_order']);
                         }
                         if(isset($column['sort_order']) && $column['sort_order'] == true)
                         {
@@ -118,7 +118,7 @@
                                 {
                                     $filters['filter_'.$column['filter_index']] = null;
                                 }
-                                echo \App\Services\Html::dropdown('filter_'.$column['filter_index'],
+                                echo \Doanthuan\Ladmin\Helper\Html::dropdown('filter_'.$column['filter_index'],
                                     $filters['filter_'.$column['filter_index']],
                                     array('onchange' => "submitbutton('setFilter')", 'class' => 'form-control'),
                                     $column['filter_data']['collection'],
@@ -170,11 +170,11 @@
                             }
                             else if($column['name'] == 'status' && isset($column['sort_order']) && $column['sort_order'] == true)
                             {
-                                echo '<td>'.\App\Services\Html::gridSortOrder($item->sort_order).'</td>';
+                                echo '<td>'.\Doanthuan\Ladmin\Helper\Html::gridSortOrder($item->sort_order).'</td>';
                             }
                             else if($column['name'] == 'status' && isset($column['published']) && $column['published'] == true)
                             {
-                                echo '<td>'.\App\Services\Html::gridPublish($item->status, $i).'</td>';
+                                echo '<td>'.\Doanthuan\Ladmin\Helper\Html::gridPublish($item->status, $i).'</td>';
                             }
                             else if (DateTime::createFromFormat('Y-m-d H:i:s', $item->$column['name']) !== FALSE) {
                                 // it's a date

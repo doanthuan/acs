@@ -32,17 +32,38 @@ class Authenticate {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
-		{
-			if ($request->ajax())
-			{
-				return response('Unauthorized.', 401);
-			}
-			else
-			{
-				return redirect()->guest('auth/login');
-			}
-		}
+//		if ($this->auth->guest())
+//		{
+//			if ($request->ajax())
+//			{
+//				return response('Unauthorized.', 401);
+//			}
+//			else
+//			{
+//				return redirect()->guest('auth/login');
+//			}
+//		}
+
+//		if(empty($_SERVER['AUTH_USER']) || empty($_SERVER['AUTH_PASSWORD']))
+//		{
+//			return response('Unauthorized.', 401);
+//		}
+
+//		$realm = 'acs_iis.local/';
+//		if(empty($_SERVER['LOGON_USER']))
+//		{
+//			//They haven't given us a username and password yet
+//			header('HTTP/1.1 401 Access Denied');
+//			header('WWW-Authenticate: Negotiate');
+//			header('WWW-Authenticate: NTLM ');
+//			die(); //if they hit cancel
+//		}
+//
+//
+//
+//		echo "<pre>";
+//		print_r($_SERVER);exit;
+
 
 		return $next($request);
 	}

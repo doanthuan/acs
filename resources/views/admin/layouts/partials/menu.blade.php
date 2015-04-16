@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">ACS Admin Panel</a>
+            <a class="navbar-brand" href="#">ACS {{trans('Admin Panel')}}</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -15,11 +15,10 @@
                 <li><a href="{{url('admin/device-type')}}">Device Types</a></li>
                 <li><a href="{{url('admin/visit-log')}}">Visit Logs</a></li>
                 <li><a href="{{url('admin/device-lending')}}">Lending Devices</a></li>
-                <li><a href="{{url('admin/setting')}}">Settings</a></li>
+                {{--<li><a href="{{url('admin/setting')}}">Settings</a></li>--}}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{url('')}}" onclick="">Front Page</a></li>
-                <li><a href="{{url('admin/logout')}}">Log Out</a></li>
             </ul>
 
         </div><!--/.nav-collapse -->

@@ -41,13 +41,13 @@ class VisitLog extends \Doanthuan\Ladmin\Block\Grid{
 
         $this->addColumn(array(
             'name' => 'EmployeeName',
-            'header' => trans('Employee'),
+            'header' => trans('Visitor'),
             'renderer' => new Renderer\EmployeeRenderer()
         ));
 
         $this->addColumn(array(
             'name' => 'DepartmentName',
-            'header' => trans('Department'),
+            'header' => trans('Company'),
             'renderer' => new Renderer\DepartmentRenderer()
         ));
 //

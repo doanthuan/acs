@@ -9,20 +9,30 @@ class LendingController extends Controller{
         return view('index');
     }
 
+    public function getLend()
+    {
+        return view('lend');
+    }
+
+    public function getReturn()
+    {
+        return view('return');
+    }
+
     public function postLending(\App\Http\Requests\StoreLendingDeviceRequest $request)
     {
         //another validation
         $deviceId = $request->input('DeviceId');
         $exists = \App\DeviceLending::where('DeviceId', $deviceId)->whereRaw('EndDate IS NOT NULL')->exists();
         if($exists){
-            return \Redirect::back()->withErrors(array('DeviceId' =>'Device is lending by other Employee'))->withInput();
+            return \Redirect::back()->withErrors(array('DeviceId' => trans('Device is lending by other Employee')))->withInput();
         }
 
         $data = $request->all();
         $data['StartDate'] = date('Y-m-d H:i:s');
         \App\DeviceLending::create($data);
 
-        return \Redirect::to('/')->with('success', trans(' Your request is successful ').'!');;
+        return \Redirect::back()->with('success', trans('Your request is successful').'!');;
     }
 
     public function postReturn(Request $request)
@@ -34,14 +44,14 @@ class LendingController extends Controller{
         $deviceId = $request->input('RetDeviceId');
         $exists = \App\DeviceLending::where('DeviceId', $deviceId)->whereRaw('EndDate IS NOT NULL')->exists();
         if(!$exists){
-            return \Redirect::back()->withErrors(array('RetDeviceId' =>'Device is not lending by any Employee'))->withInput();
+            return \Redirect::back()->withErrors(array('RetDeviceId' => trans('Device is not lending by any Employee')))->withInput();
         }
 
         $deviceLending = \App\DeviceLending::find($deviceId);
         $deviceLending->EndDate = date('Y-m-d H:i:s');
         $deviceLending->save();
 
-        return \Redirect::to('/')->with('success', trans(' Your request is successful ').'!');;
+        return \Redirect::back()->with('success', trans('Your request is successful').'!');
     }
 
 }

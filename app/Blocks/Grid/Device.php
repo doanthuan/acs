@@ -33,12 +33,6 @@ class Device extends \Doanthuan\Ladmin\Block\Grid{
         $this->addColumn(array(
             'name' => 'DeviceTypeName',
             'header' => trans('DeviceTypes'),
-            'filter_type' => 'text'
-        ));
-
-        $this->addColumn(array(
-            'name' => 'DeviceTypeName',
-            'header' => trans('DeviceTypes'),
             'filter_type' => 'dropdown',
             'filter_index' => 'DeviceTypeId',
             'filter_data' => array(
