@@ -20,7 +20,7 @@ class VisitLogController extends \Doanthuan\Ladmin\Controller\AdminController {
         }
 
         if(\Request::has('did')) {
-            $name = \DB::table('Departments')->find(\Request::input('did'))->Name;
+            $name = \DB::table('Departments')->where('Id',\Request::input('did'))->first()->Name;
             Toolbar::title('Visit Logs'. ' ( Department: '.$name.')');
         }
 

@@ -20,7 +20,7 @@ return [
     'Device Id' => 'Device Id',
     'Employee Id' => 'Employee Id',
     'Submit' => 'Submit',
-    'Back' => 'Submit',
+    'Back' => 'Back',
 
     'Admin Panel' => 'Admin Panel',
     'Display' => 'Display',

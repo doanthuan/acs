@@ -10,7 +10,7 @@
 @endif
 
 <fieldset>
-    <legend>trans('messages.Return Device')</legend>
+    <legend>{{trans('messages.Return Device')}}</legend>
 
     <div class="form-group">
         {!! Form::label('RetDeviceId', trans('messages.Device Id')) !!}
@@ -18,8 +18,8 @@
         <div class="error">{{$errors->first('RetDeviceId')}}</div>
     </div>
 
-    <button type="submit" class="btn btn-primary">trans('messages.Submit')</button>
-    <a class="btn btn-default pull-right" href="/">trans('messages.Back')</a>
+    <button type="submit" class="btn btn-primary">{{trans('messages.Submit')}}</button>
+    <a class="btn btn-default pull-right" href="/">{{trans('messages.Back')}}</a>
 
 </fieldset>
 

@@ -2,6 +2,7 @@
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
+use DB;
 
 class Authenticate {
 
@@ -64,8 +65,21 @@ class Authenticate {
 //		echo "<pre>";
 //		print_r($_SERVER);exit;
 
+		if(empty($_SERVER['AUTH_USER']))
+		{
+			return response('Unauthorized.', 401);
+			//$username = 'RETHUSO-NT8004\IUSR_RETHUSO-NT8004';
+		}
+		else{
+			$username = $_SERVER['AUTH_USER'];
+		}
 
+		$user = DB::table('User')->where('UserName', $username)->first();
+		if(!$user){
+			return response('Unauthorized.', 401);
+		}
 		return $next($request);
+
 	}
 
 }
